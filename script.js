@@ -1,11 +1,11 @@
 const button_add = document.getElementById("add-task-btn");
+const task_input = document.getElementById("task-input");
 
-button_add.onclick = function (){
-    const task_input = document.getElementById("task-input");
+function add_task(){
     const task_list = document.getElementById("task-list");
-
+    
     if(task_input.value == ""){
-        window.alert("Please enter a task.");
+        window.alert("Please enter Your Task.");
     }
     else {
         const task_div = document.createElement("div");
@@ -22,14 +22,34 @@ button_add.onclick = function (){
 
         task_span.innerText = task_input.value;
         task_btn.innerText = "Delete";
-        task_btn.onclick = function (){
+        task_btn.addEventListener("click", function (){
             task_div.remove();
-        }
+        });
         task_div.appendChild(task_span);
         task_div.appendChild(task_btn);
 
-        task_list.appendChild(task_div);
-    }
+        window.addEventListener("keyup", function (event){
+            if(event.key == "Delete"){
+                task_div.remove();
+                this.window.localStorage.clear();
+            }
+        });
 
-    task_input.value = "";
+        task_list.appendChild(task_div);
+
+        window.localStorage.setItem("task", task_div);
+
+        task_input.value = "";
+        task_input.focus();
+    }
 }
+
+button_add.addEventListener("click", add_task);
+window.addEventListener("keyup", function (event){
+    if(event.key == "Enter"){
+        add_task();
+    }
+    else if(event.key == "Shift"){
+        task_input.value = "";
+    }
+});

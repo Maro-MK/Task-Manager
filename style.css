@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
+* {
+    scroll-behavior: smooth;
+    scrollbar-color: midnightblue black;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: midnightblue;
@@ -22,6 +27,9 @@ input {
     border-radius: 5px;
     border: 1px solid black;
     font-weight: bold;
+    white-space: nowrap;
+    overflow-x: auto;
+    width: auto;
     transition: 0.7s ease;
 }
 
