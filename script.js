@@ -31,13 +31,13 @@ function add_task(){
         window.addEventListener("keyup", function (event){
             if(event.key == "Delete"){
                 task_div.remove();
-                this.window.localStorage.clear();
+                this.localStorage.clear();
             }
         });
 
         task_list.appendChild(task_div);
 
-        window.localStorage.setItem("task", task_div);
+        localStorage.setItem("task", task_div);
 
         task_input.value = "";
         task_input.focus();
